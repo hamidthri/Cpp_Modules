@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 21:02:10 by htaheri           #+#    #+#             */
-/*   Updated: 2024/02/19 14:41:20 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/02/19 20:10:58 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ void PhoneBook::AddContact()
     static int i;
 
     this->_contact[i % 8]._initialize();
+    // print i
+    std::cout << i << std::endl;
     this->_contact[i % 8]._setIndex(i % 8);
     i++;
 }
 
 void PhoneBook::_displayContact() 
 {
-    int index;
+    char index;
     bool valid = true;
     int i = 0;
     
@@ -55,7 +57,7 @@ void PhoneBook::_displayContact()
             std::cin >> index;
             if (std::cin.eof())
                 exit(0);
-            if (std::cin.fail() || std::cin.peek() != '\n' || index < '0' || index > '7' || this->_contact[index].isEmpty()) 
+            if (std::cin.fail() || std::cin.peek() != '\n' || index < '0' || index > '7' || this->_contact[index - '0'].isEmpty()) 
             {
                 std::cin.clear();
                 std::cin.ignore();
@@ -63,7 +65,7 @@ void PhoneBook::_displayContact()
             }
             else
             {
-                this->_contact[index]._printContact();
+                this->_contact[index - '0']._printContact();
                 valid = false;
             }
         }
