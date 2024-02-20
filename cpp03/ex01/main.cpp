@@ -1,15 +1,16 @@
-
-
 # include "ClapTrap.hpp"
 
-int main()
-{
-    ClapTrap claptrap("ClapTrap");
-    ClapTrap claptrap2("ClapTrap2");
+#include "ScavTrap.hpp"
 
-    claptrap.attack("ClapTrap2");
-    claptrap2.takeDamage(5);
-    claptrap2.beRepaired(5);
+int main( void )
+{
+    ScavTrap ash("Ash");
+    ScavTrap ash2( ash );
+
+    ash.attack( "the air" );
+    ash.takeDamage( 10 );
+    ash.beRepaired( 10 );
+    ash.guardGate();
 
     return 0;
 }
