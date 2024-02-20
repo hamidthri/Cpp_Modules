@@ -1,9 +1,4 @@
 
-# include "ClapTrap.hpp"
-
-
-
-
 
 #include "ClapTrap.hpp"
 

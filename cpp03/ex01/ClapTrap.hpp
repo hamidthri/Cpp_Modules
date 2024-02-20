@@ -25,4 +25,6 @@ class ClapTrap
         ClapTrap & operator=(ClapTrap const & rhs);
 };
 
+
+
 #endif
