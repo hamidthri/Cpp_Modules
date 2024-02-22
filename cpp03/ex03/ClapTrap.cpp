@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 13:52:51 by htaheri           #+#    #+#             */
-/*   Updated: 2024/02/22 15:41:30 by htaheri          ###   ########.fr       */
+/*   Created: 2024/02/22 19:22:33 by htaheri           #+#    #+#             */
+/*   Updated: 2024/02/22 20:56:23 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ ClapTrap::ClapTrap(const ClapTrap &rhs)
     *this = rhs;
     std::cout << "ClapTrap copy constructor called." << std::endl;
 }
-
-
 
 void ClapTrap::attack(std::string const &target)
 {

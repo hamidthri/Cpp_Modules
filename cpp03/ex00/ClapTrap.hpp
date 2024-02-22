@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 13:53:56 by htaheri           #+#    #+#             */
-/*   Updated: 2024/02/22 16:29:48 by htaheri          ###   ########.fr       */
+/*   Created: 2024/02/18 20:57:00 by htaheri           #+#    #+#             */
+/*   Updated: 2024/02/22 15:42:44 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,19 @@
 
 class ClapTrap
 {
-    protected:
-        std::string     _name;
-        size_t          _hit_points;
-        size_t          _energy_points;
-        size_t          _attack_damage;
-
+    private:
+        std::string _name;
+        size_t         _energy_points;
+        size_t         _hit_points;
+        size_t         _attack_damage;
     public:
-        ClapTrap(std::string    name);
-        ~ClapTrap();
+        ClapTrap(std::string name);
         ClapTrap(const ClapTrap &rhs);
-        
+        ~ClapTrap();
         void attack(std::string const & target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);
-        
-        ClapTrap  &operator=(const ClapTrap &rhs);
-          
+        ClapTrap &operator=(ClapTrap const &rhs);
 };
 
 #endif
