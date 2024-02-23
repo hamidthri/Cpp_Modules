@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 15:07:47 by htaheri           #+#    #+#             */
-/*   Updated: 2024/02/12 15:18:03 by htaheri          ###   ########.fr       */
+/*   Created: 2024/02/11 19:54:34 by htaheri           #+#    #+#             */
+/*   Updated: 2024/02/19 17:29:28 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+# include "Zombie.hpp"
 
-int main(int argc, char **argv)
+Zombie::Zombie()
 {
-    if (argc != 4)
-    {
-        std::cerr << "Not enough arguments." << std::endl;
-    }
-    else 
-    {
-        
-    }
+}
+Zombie::~Zombie()
+{
+    std::cout << "Zombie " << this->_name << " is destroyed" << std::endl;
+}
+void Zombie::announce(void)
+{
+    std::cout << this->_name << " BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(std::string name)
+{
+    this->_name = name;
 }

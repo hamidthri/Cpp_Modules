@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 18:40:46 by htaheri           #+#    #+#             */
-/*   Updated: 2024/02/12 17:10:05 by htaheri          ###   ########.fr       */
+/*   Created: 2024/02/19 16:02:39 by htaheri           #+#    #+#             */
+/*   Updated: 2024/02/20 12:24:06 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+# include "Zombie.hpp"
 
-# include <iostream>
-
-class Zombie
+int main( void ) 
 {
-private:
-    std::string _name;
-public:
-    Zombie(std::string name);
-    ~Zombie();
-    void    _announce(void);
-};
+    std::string name;
 
-Zombie* newZombie(std::string name);
-void randomChump(std::string name);
-
-# endif
+    std::cout << "Zombie name: " << std::flush;
+    std::cin >> name;
+   
+    // heap allocation
+    Zombie *zombi1 = newZombie(name);
+    zombi1->_announce();
+    delete zombi1;
+    
+    std::cout << "Zombie name: " << std::flush;
+    std::cin >> name;
+    // stack allocation
+    randomChump(name);
+    return 0;
+}

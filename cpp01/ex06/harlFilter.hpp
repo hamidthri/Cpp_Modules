@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   harlFilter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/12 15:28:51 by htaheri           #+#    #+#             */
-/*   Updated: 2024/02/12 15:29:01 by htaheri          ###   ########.fr       */
+/*   Created: 2024/02/13 18:41:09 by htaheri           #+#    #+#             */
+/*   Updated: 2024/02/13 18:47:09 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef HARLFILTER_HPP
+# define HARLFILTER_HPP
+
 #include <iostream>
-class Harl
+
+class harlFilter
 {
-    private:
-        void    debug(void);
-        void    info(void);
-        void    warning(void);
-        void    error(void);
-    public:
-        Harl();
-        ~Harl();
-        void  complain(std::string level);
+	private:
+		void	debug( void );
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	public:
+		harlFilter();
+		~harlFilter();
+		void	complain(std::string level );
 };
 
 #endif
