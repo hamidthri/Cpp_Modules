@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:13:45 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 13:42:52 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:11:28 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,18 @@ AForm::AForm(void): _name("default"), _isSigned(false), _signedGrade(150), _exec
 {
     
 }
-AForm::AForm(const std::string& name, bool isSigned, int signedGrade, int execGrade): _name(name),
-    _isSigned(isSigned), _signedGrade(signedGrade), _execGrade(execGrade)
+AForm::AForm(const std::string& name, const int signedGrade, const int execGrade): _name(name)
+        , _signedGrade(signedGrade), _execGrade(execGrade)
 {
     if (signedGrade < 1 || execGrade < 1)
         throw GradeTooHighException();
     else if (signedGrade > 150 || execGrade > 150)
         throw GradeTooLowException();
+}
+
+AForm::~AForm()
+{
+    
 }
 
 AForm::AForm(const AForm& copy): _name(copy._name), _signedGrade(copy._signedGrade),
@@ -52,7 +57,7 @@ int AForm::getSignedGrade(void) const
     return(this->_signedGrade);
 }
 
-bool AForm::isSigned(void) const
+bool AForm::getIsSigned(void) const
 {
     return(this->_isSigned);
 }
@@ -63,7 +68,7 @@ void    AForm::beSigned(const Bureaucrat& bureaucrat)
         throw GradeTooHighException();
     else if (bureaucrat.getGrade() < 150)
         throw GradeTooLowException();
-    else if (bureaucrat.getGrade() > 5)
+    else if (bureaucrat.getGrade() > this->_execGrade)
         this->_isSigned = true;
 }
 

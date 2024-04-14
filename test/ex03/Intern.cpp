@@ -1,35 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 14:39:31 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/14 14:59:43 by htaheri          ###   ########.fr       */
+/*   Created: 2024/04/12 13:46:25 by htaheri           #+#    #+#             */
+/*   Updated: 2024/04/12 15:46:22 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Bureaucrat.hpp"
+# include "Intern.hpp"
 
-int main(void)
+Intern::Intern(void)
 {
-    try
-    {
-        Bureaucrat b(2);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
     
-    try
+}
+Intern::Intern(const Intern& copy)
+{
+    *this = copy;
+}
+
+Intern& Intern::operator=(const Intern& other)
+{
+    if (this != &other)
     {
-        Bureaucrat b(151);
+        *this = other;
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    return (*this);
+}
+
+
+Intern::~Intern(void)
+{
     
+}
+
+
+AForm* Intern::makeForm(std::string name, std::string target)
+{
+    
+}
+
+const char* Intern::FormNotFoundException::what() const throw()
+{
+    return ("Form not found");
 }

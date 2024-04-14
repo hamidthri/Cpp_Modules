@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:13:45 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 16:21:19 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:10:44 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int Form::getSignedGrade(void) const
     return(this->_signedGrade);
 }
 
-bool Form::isSigned(void) const
+bool Form::getIsSigned(void) const
 {
     return(this->_isSigned);
 }

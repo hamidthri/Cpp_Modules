@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 13:13:48 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 16:19:25 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:10:54 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Form
 
         const std::string   getName(void) const;
         int                 getGrade(void) const;
-        bool                isSigned(void) const;
+        bool                getIsSigned(void) const;
         int                 getExecGrade(void) const;
         int                 getSignedGrade(void) const;
         void                beSigned(const Bureaucrat& bureaucrat);

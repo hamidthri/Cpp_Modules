@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:19:37 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 17:00:46 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/07 18:26:07 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
         return (*this);
     this->grade = copy.grade;
     return (*this);
-}
-
-// -----------<< operator overloading-----------
-std::ostream& operator<<(std::ostream& out, Bureaucrat& bureaucrat)
-{
-    out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
-    return (out);
 }
 
 // destructor
@@ -98,21 +91,4 @@ void    Bureaucrat::decreaseGrade()
         throw GradeTooLowException();
     else
         this->grade++;
-}
-
-void    Bureaucrat::signForm(const AForm& form)
-{
-    if (form.isSigned())
-        std::cout << " bureaucrat " << this->name << " signed " << form.getName() << std::endl;
-    else 
-        std::cout << " bureaucrat " << this->name << " couldn’t sign " << form.getName() << " because ... " << std::endl;
-}
-
-
-void	Bureaucrat::executeForm(AForm const & form)
-{
-    if (this->getGrade() > form.getExecGrade())
-        throw GradeTooLowException();
-    else
-        std::cout << this->getName() << " executed " << form.getName() << std::endl;
 }

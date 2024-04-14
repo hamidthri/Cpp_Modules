@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 12:06:11 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 15:03:39 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:23:55 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ class ShrubberyCreationForm: public AForm
     private:
         std::string _target;
     public:
-        ShrubberyCreationForm(const std::string& target);
+        ShrubberyCreationForm(void);
         virtual ~ShrubberyCreationForm(void);
-        
+        ShrubberyCreationForm(const std::string& target);
+        ShrubberyCreationForm(const ShrubberyCreationForm& copy);
+        ShrubberyCreationForm& operator=(const ShrubberyCreationForm& copy);
         std::string     getTarget() const;
         void            execute(Bureaucrat const & executor) const;
 };

@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:13:59 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 16:58:28 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 13:40:02 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ class Bureaucrat
 		void    					decreaseGrade();
 		void						signForm(const AForm& form);
 		void						executeForm(AForm const & form);
+		
+		
 
 
 		class GradeTooHighException: public std::exception
@@ -52,5 +54,6 @@ class Bureaucrat
 		};
 };
 
+std::ostream& operator<<(std::ostream& out, Bureaucrat& bureaucrat);
 
 #endif

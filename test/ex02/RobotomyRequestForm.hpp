@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 14:55:31 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 15:04:16 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:23:06 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class RobotomyRequestForm: public AForm
         RobotomyRequestForm(void);
         RobotomyRequestForm(std::string target);
         ~RobotomyRequestForm(void);
+        RobotomyRequestForm(const RobotomyRequestForm& copy);
+        RobotomyRequestForm& operator=(const RobotomyRequestForm& copy);
 
         void            execute(Bureaucrat const & executor) const;
         

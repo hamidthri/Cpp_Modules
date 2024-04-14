@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 15:21:00 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 15:34:30 by htaheri          ###   ########.fr       */
+/*   Created: 2024/04/07 13:13:54 by htaheri           #+#    #+#             */
+/*   Updated: 2024/04/12 12:48:01 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
 
 # include "Bureaucrat.hpp"
 # include "AForm.hpp"
 
-class PresidentialPardonForm: public AForm
-{
-    private:
-        std::string _target;
-    public:
-        PresidentialPardonForm(void);
-        PresidentialPardonForm(std::string target);
-        ~PresidentialPardonForm(void);
-        void        execute(Bureaucrat const & executor) const;
-};
 
-#endif
+int main(void)
+{
+    try
+    {
+        Bureaucrat b1(145);
+        AForm       form("hamid", 45, 68);
+        b1.signForm(form);
+        std::cout << form.isSigned() << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+}

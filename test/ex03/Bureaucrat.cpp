@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:19:37 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/09 16:45:02 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/12 15:31:46 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,19 @@ void    Bureaucrat::decreaseGrade()
         this->grade++;
 }
 
-void    Bureaucrat::signForm(const Form& form)
+void    Bureaucrat::signForm(const AForm& form)
 {
-    if (form.isSigned())
+    if (form.getIsSigned())
         std::cout << " bureaucrat " << this->name << " signed " << form.getName() << std::endl;
     else 
         std::cout << " bureaucrat " << this->name << " couldn’t sign " << form.getName() << " because ... " << std::endl;
+}
+
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+    if (this->getGrade() > form.getExecGrade())
+        throw GradeTooLowException();
+    else
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
 }
