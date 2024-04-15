@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 13:31:22 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/14 17:09:05 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/14 17:04:23 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -31,8 +34,11 @@ class Bureaucrat
           
           int       getGrade(void) const;
           const     std::string getName(void) const;
+
+          
           void      incGrade(void);
           void      decGrade(void);
+          void      signForm(const Form& form);
           
 
           class GradeTooLowException: public std::exception
