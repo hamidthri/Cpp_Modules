@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 17:56:38 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/15 13:14:49 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/16 15:39:19 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target): AForm("Shrubbe
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {
-    std::cout << "Destructor called. " << std::endl;
+    // std::cout << "Destructor called. " << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy): AForm(copy), 
@@ -38,7 +38,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy):
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
 {
-    std::cout << "Assignation operator called. " << std::endl;
+    // std::cout << "Assignation operator called. " << std::endl;
     if (this != &other)
         this->_target = other._target;
     return (*this);
@@ -50,7 +50,7 @@ void    ShrubberyCreationForm::execute(Bureaucrat const &executor) const
         throw AForm::FormNotSignedException();
     else if (this->getgradeExec() < executor.getGrade())
         throw Bureaucrat::GradeTooLowException();
-    std::ofstream out(this->_target + "_shrubbery");
+    std::ofstream out((this->_target + "_shrubbery").c_str());
     if (!out)
         throw std::runtime_error("Couldn't create file.");
     out << "       ###" << std::endl;

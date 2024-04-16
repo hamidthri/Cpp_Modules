@@ -6,11 +6,11 @@
 #    By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 13:21:07 by htaheri           #+#    #+#              #
-#    Updated: 2024/04/14 19:50:21 by htaheri          ###   ########.fr        #
+#    Updated: 2024/04/16 13:10:08 by htaheri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 RM = rm -rf
 FLAGs = -Wall -Wextra -Werror -std=c++98
 

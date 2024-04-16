@@ -29,7 +29,7 @@ class AForm
         
     public:
         AForm(void);
-        ~AForm(void);
+        virtual ~AForm(void);
         AForm(std::string name, int gradeSign, int gradeExec);
         AForm(const AForm& copy);
         AForm& operator=(const AForm& other);

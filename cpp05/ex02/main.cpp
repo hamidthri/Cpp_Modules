@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:39:31 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/14 20:12:55 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/16 14:18:54 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@
 
 int main()
 {
-    Bureaucrat  b1("b1", 1);
-    Bureaucrat  b2("b2", 150);
-    Bureaucrat  b3("b3", 75);
-    Bureaucrat  b4("b4", 75);
-    Bureaucrat  b5("b5", 75);
+    Bureaucrat  b1("b1", 75);
+    Bureaucrat  b2("b2", 40);
+    Bureaucrat  b3("b3", 25);
+ 
     AForm       *f[3] = {new ShrubberyCreationForm("home"), new RobotomyRequestForm("robot"), new PresidentialPardonForm("pardon")};
     
     for (int i = 0; i < 3; i++)
@@ -37,6 +36,7 @@ int main()
         {
             std::cerr << e.what() << '\n';
         }
+        delete f[i];
     }
 }
 

@@ -14,27 +14,31 @@
 
 AForm::AForm(void): _name("default"), _gradeSign(150), _gradeExec(150)
 {
-    std::cout << "Default Constructor called." << std::endl;
+    // std::cout << "Default Constructor called." << std::endl;
 }
 
-AForm::AForm(std::string name, int gradeSign, int gradeExec): _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
+AForm::AForm(std::string name, int gradeSign, int gradeExec): _name(name), _isSigned(false), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
-    std::cout << "Parametric Constructor called." << std::endl;
+    // std::cout << "Parametric Constructor called." << std::endl;
+    if (this->_gradeSign > 150 || this->_gradeExec > 150)
+        throw GradeTooLowException();
+    if (this->_gradeSign < 1 || this->_gradeExec < 1)
+        throw GradeTooHighException();
 }
 
 AForm::~AForm(void)
 {
-    std::cout << "Deconstructor called." << std::endl;
+    // std::cout << "Deconstructor called." << std::endl;
 }
 
 AForm::AForm(const AForm& copy): _name(copy._name), _isSigned(copy._isSigned), _gradeSign(copy._gradeSign), _gradeExec(copy._gradeExec)
 {
-    std::cout << "Copy Constructor called." << std::endl;
+    // std::cout << "Copy Constructor called." << std::endl;
 }
 
 AForm& AForm::operator=(const AForm& other)
 {
-    std::cout << "Assignation operator called." << std::endl;
+    // std::cout << "Assignation operator called." << std::endl;
     if (this != &other)
         this->_isSigned = other._isSigned;
     return (*this);
@@ -72,7 +76,7 @@ void    AForm::beSigned(const Bureaucrat& bureaucrat)
         throw Bureaucrat::GradeTooHighException();
     else if (bureaucrat.getGrade() > 150)
         throw Bureaucrat::GradeTooLowException();
-    if(bureaucrat.getGrade() < this->getgradeSign())
+    if(bureaucrat.getGrade() <= this->getgradeSign())
         this->_isSigned = true;
 }
 
