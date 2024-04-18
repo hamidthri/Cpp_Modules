@@ -5,28 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/16 18:38:53 by htaheri           #+#    #+#              #
-#    Updated: 2024/04/18 16:39:15 by htaheri          ###   ########.fr        #
+#    Created: 2024/04/18 20:19:57 by htaheri           #+#    #+#              #
+#    Updated: 2024/04/18 20:21:06 by htaheri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = ex02
+RM = rm -f
 CC = c++
-
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-
-SRCs = main.cpp ScalarConverter.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98
+SRCS = main.cpp
 
 all: $(NAME)
 
-$(NAME): $(SRCs)
-	$(CC) $(CFLAGS) $(SRCs) -o $(NAME)
+$(NAME): $(SRCS)
+	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
-	rm -f $(OBJs)
+	$(RM) $(OBJS)
+
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
-
 .PHONY: all clean fclean re
