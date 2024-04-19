@@ -6,7 +6,7 @@
 #    By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 20:19:57 by htaheri           #+#    #+#              #
-#    Updated: 2024/04/18 20:21:06 by htaheri          ###   ########.fr        #
+#    Updated: 2024/04/19 13:26:42 by htaheri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = ex02
 RM = rm -f
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp
+SRCS = main.cpp Base.cpp
 
 all: $(NAME)
 
