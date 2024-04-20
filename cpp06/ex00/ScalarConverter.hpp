@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 18:46:05 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/18 16:59:55 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/19 14:39:22 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 #include <string>
 #include <sstream>
 #include <cmath>
+#include <cfloat>
 
 typedef struct s_type
 {
@@ -34,10 +35,6 @@ class ScalarConverter
         ~ScalarConverter();
         ScalarConverter(const ScalarConverter &copy);
         ScalarConverter &operator=(const ScalarConverter &copy);
-
-    // add FLT_MAX and FLT_MIN
-        static double FLT_MAX;
-        static double FLT_MIN;
 
         void   convertChar(char c);
         void   convertInt(int i);
