@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:22:34 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/27 17:22:36 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:33:32 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ class Span
         Span();
         ~Span();
         Span(unsigned int N);
+        Span(const Span &copy);
+        Span &operator=(const Span &copy);
         
         void addNumber(int num);
         int shortestSpan();

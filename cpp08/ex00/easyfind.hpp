@@ -16,17 +16,15 @@
 #include <iostream>
 #include <list>
 #include <vector>
+#include <algorithm>
 
 template<typename T>
 typename T::const_iterator easyfind(const T& container, int param)
 {
-    typename T::const_iterator it = find(container.begin(), container.end(), param);
+    typename T::const_iterator it = std::find(container.begin(), container.end(), param);
     if (it != container.end())
-    {
-        std::cout << "Found the element: " << *it << std::endl;
         return (it);
-    }
-    else
+	else
         throw std::runtime_error("Couldn't find the param within the container");
 }
 

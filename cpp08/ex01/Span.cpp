@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 15:22:20 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/27 17:28:43 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/04/28 16:33:46 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,32 @@ Span::~Span()
     
 }
 
-Span::Span(unsigned int n): N(n), array(N)
+Span::Span(unsigned int n): N(n), array(0)
 {
     
 }
 
+Span::Span(const Span &copy)
+{
+    *this = copy;
+}
+
+Span &Span::operator=(const Span &copy)
+{
+    if (this == &copy)
+        return (*this);
+    this->N = copy.N;
+    this->array = copy.array;
+    return (*this);
+}
+
+
 void Span::addNumber(int num)
 {
-    static unsigned int i;
-
-    if (i >= N)
-        throw std::runtime_error("There are already N elements in the Span");
+    if (N <= array.size())
+        throw std::runtime_error("There are already elements in the Span");
     else
-        array[i] = num;
-    i++;
+        array.push_back(num);
 }
 
 int Span::longestSpan()
