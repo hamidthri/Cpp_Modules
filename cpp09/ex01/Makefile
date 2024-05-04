@@ -6,13 +6,13 @@
 #    By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/30 19:42:44 by htaheri           #+#    #+#              #
-#    Updated: 2024/04/30 19:43:15 by htaheri          ###   ########.fr        #
+#    Updated: 2024/05/02 12:57:29 by htaheri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = RPN
 CC = c++
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -std=c++98
 SRCS = main.cpp RPN.cpp
 HDRS = RPN.hpp
 
@@ -24,5 +24,5 @@ $(NAME): $(SRCS) $(HDRS)
 clean:
 	rm -f $(NAME)
 fclean: clean
-re: fclean al
+re: fclean all
 .PHONY: all clean fclean re

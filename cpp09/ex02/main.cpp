@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/30 19:46:33 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/01 16:32:23 by htaheri          ###   ########.fr       */
+/*   Created: 2024/05/02 15:58:59 by htaheri           #+#    #+#             */
+/*   Updated: 2024/05/04 20:11:12 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-# define RPN_HPP
+#include "PmergeMe.hpp"
 
-# include <iostream>
-# include <string>
-# include <stack>
-
-
-class RPN
+int main(int argc, char **argv)
 {
-    private:
-        std::stack<float> _con;
-    public:
-        RPN();
-        RPN(std::string str);
-        ~RPN();
-        RPN(const RPN &other);
-        RPN &operator=(const RPN &other);
-
-        void inputParser(std::string str);
-};
+    if (argc < 2)
+    {
+        std::cerr << "Usage: ./PmergeMe [args]" << std::endl;
+        return (1);
+    }
+    PmergeMe p;
+    p.readArgs(argv + 1);
+    return (0);
+}
 
 
-#endif
+

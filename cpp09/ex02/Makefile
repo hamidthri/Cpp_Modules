@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/30 14:16:24 by htaheri           #+#    #+#              #
-#    Updated: 2024/05/01 20:11:28 by htaheri          ###   ########.fr        #
+#    Created: 2024/05/02 12:55:49 by htaheri           #+#    #+#              #
+#    Updated: 2024/05/04 20:05:49 by htaheri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = btc
+NAME = PmergeMe
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp BitcoinExchange.cpp
-HDRS = BitcoinExchange.hpp 
+SRCS = main.cpp PmergeMe.cpp
+HDRS = PmergeMe.hpp
 
 all: $(NAME)
 
@@ -22,7 +22,10 @@ $(NAME): $(SRCS) $(HDRS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(OBJS)
+
 fclean: clean
+	rm -f $(NAME)
 re: fclean all
-.PHONY: all clean fclean re
+.PHONY: all clean
+
