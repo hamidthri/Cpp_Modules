@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:39 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/07 13:25:36 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 20:19:17 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,14 @@ bool PmergeMe::parseArgs(Container &temp, char **argv)
 {
     while (*argv)
     {
-        std::string arg = *argv;
-        std::istringstream iss(arg);
-        int num;
-        char next_char;
-        while (iss >> num)
-        {
-            if ((iss >> next_char && !std::isdigit(next_char)) || num < 0)
-                return false;
-            temp.push_back(num);
-        }
+        std::stringstream ss(*argv);
+        int i;
+        std::string str;
+        if (!(ss >> i))
+            return false;
+        if (ss >> str)
+            return false;
+        temp.push_back(i);
         ++argv;
     }
     return true;

@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:47:54 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/07 12:08:26 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 20:13:12 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void RPN::operation(std::string::iterator it)
     float a = _con.top();
     _con.pop();
     float b = _con.top();
+    _con.pop();
     if (*it == '+')
         _con.push(a + b);
     else if (*it == '-')
@@ -73,7 +74,7 @@ void RPN::inputParser(std::string str)
             std::cerr << "Error: Invalid character" << std::endl;
             return ;
         }
-        if (*it == ' ')
+        while (*it == ' ')
             it++;
         while (isdigit(*it))
         {
@@ -92,6 +93,9 @@ void RPN::inputParser(std::string str)
         
         it++;
     }
-    std::cout << _con.top() << std::endl;
+    if (_con.size() == 1)
+        std::cout << _con.top() << std::endl;
+    else
+        std::cerr << "Error: Not enough operators" << std::endl;
     
 }
