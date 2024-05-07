@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:38:09 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/05 17:58:54 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 13:17:36 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ bool BitcoinExchange::checkDate(std::string date)
 {
     if (date.length() != 10 || date[4] != '-' || date[7] != '-')
         return false;
-    int year = std::stoi(date.substr(0, 4));
-    int month = std::stoi(date.substr(5, 2));
-    int day = std::stoi(date.substr(8, 2));
+    int year = atoi(date.substr(0, 4).c_str());
+    int month = atoi(date.substr(5, 2).c_str());
+    int day = atoi(date.substr(8, 2).c_str());
     if (year < 2008)
         return false;
     if (month < 1 || month > 12)
@@ -61,13 +61,16 @@ bool BitcoinExchange::checkDate(std::string date)
                 if (day < 1 || day > 28)
                     return false;
             }
+            break;
         
         case 4: case 6: case 9: case 11:
             if (day < 1 || day > 30)
                 return false;
+            break;
         default:
             if (day < 1 || day > 31)
                 return false;
+            break;
     }
     return true;
 }

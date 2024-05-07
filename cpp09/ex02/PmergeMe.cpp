@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:39 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/07 12:38:14 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 13:25:36 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,12 @@ void PmergeMe::pairing(const Container1& _v1, Container2& _v2)
 {
     for (typename Container1::const_iterator it = _v1.begin(); it != _v1.end(); it += 2)
     {
-        if (std::next(it) == _v1.end())
+        if (it + 1 == _v1.end())
             break;
         
         typename Container2::value_type temp;
-        temp.push_back(std::max(*it, *std::next(it)));
-        temp.push_back(std::min(*it, *std::next(it)));
+        temp.push_back(std::max(*it, *(it + 1)));
+        temp.push_back(std::min(*it, *(it + 1)));
         _v2.push_back(temp);
     }
 }
