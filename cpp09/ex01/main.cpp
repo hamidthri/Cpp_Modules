@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:45:51 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/01 14:12:18 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 12:07:59 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int argc, char **argv)
         std::cerr << "Error: Invalid number of arguments" << std::endl;
         return (1);
     }
-    RPN rpn(argv[1]);
+    RPN rpn;
     rpn.inputParser(argv[1]);
     return (0);
 }

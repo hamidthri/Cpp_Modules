@@ -6,7 +6,7 @@
 #    By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/30 14:16:24 by htaheri           #+#    #+#              #
-#    Updated: 2024/05/01 20:11:28 by htaheri          ###   ########.fr        #
+#    Updated: 2024/05/07 12:06:59 by htaheri          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ $(NAME): $(SRCS) $(HDRS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(OBJS)
+
 fclean: clean
+	rm -f $(NAME)
 re: fclean all
 .PHONY: all clean fclean re

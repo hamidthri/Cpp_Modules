@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:47:54 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/02 12:36:11 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 12:08:26 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,34 @@ RPN &RPN::operator=(const RPN &other)
     return (*this);
 }
 
-RPN::RPN(std::string str) {
-    (void) str;
-    // Implementation of the constructor
+
+void RPN::operation(std::string::iterator it)
+{
+    if (_con.size() < 2)
+    {
+        std::cerr << "Error: Not enough operands" << std::endl;
+        return ;
+    }
+    float a = _con.top();
+    _con.pop();
+    float b = _con.top();
+    if (*it == '+')
+        _con.push(a + b);
+    else if (*it == '-')
+        _con.push(b - a);
+    else if (*it == '*')
+        _con.push(a * b);
+    else if (*it == '/')
+    {
+        if (a == 0)
+        {
+            std::cerr << "Error: Division by zero" << std::endl;
+            return ;
+        }
+        _con.push(b / a);
+    }
 }
+
 
 void RPN::inputParser(std::string str)
 {
@@ -61,37 +85,13 @@ void RPN::inputParser(std::string str)
                 std::cerr << "Error: Invalid character" << std::endl;
                 return ;
             }
-            _con.push(digit);
             it++;
         }
         if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
-        {
-            if (_con.size() < 2)
-            {
-                std::cerr << "Error: Not enough operands" << std::endl;
-                return ;
-            }
-            float a = _con.top();
-            _con.pop();
-            float b = _con.top();
-            if (*it == '+')
-                _con.push(a + b);
-            else if (*it == '-')
-                _con.push(b - a);
-            else if (*it == '*')
-                _con.push(a * b);
-            else if (*it == '/')
-            {
-                if (a == 0)
-                {
-                    std::cerr << "Error: Division by zero" << std::endl;
-                    return ;
-                }
-                _con.push(b / a);
-            }
-        }
+            operation(it);
+        
         it++;
     }
-    std::cout << "Result: " << _con.top() << std::endl;
+    std::cout << _con.top() << std::endl;
     
 }

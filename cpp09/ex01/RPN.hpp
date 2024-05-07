@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:46:33 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/01 16:32:23 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/05 20:22:08 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ class RPN
         std::stack<float> _con;
     public:
         RPN();
-        RPN(std::string str);
         ~RPN();
         RPN(const RPN &other);
         RPN &operator=(const RPN &other);
 
         void inputParser(std::string str);
+        void operation(std::string::iterator it);
 };
 
 

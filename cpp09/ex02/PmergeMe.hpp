@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:29 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/04 21:09:10 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/05 14:51:53 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <deque>
 #include <algorithm>
 #include <list>
+#include <sstream>
 
 class PmergeMe
 {
@@ -39,6 +40,9 @@ class PmergeMe
         template <typename Container>
         bool parseArgs(Container &temp, char **argv);
 
+        void vectorSort();
+        void dequeSort();
+        
         template <typename Container1, typename Container2>
         void pairing(const Container1& _v1, Container2& _v2);
         

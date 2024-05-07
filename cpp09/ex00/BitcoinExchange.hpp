@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 14:29:16 by htaheri           #+#    #+#             */
-/*   Updated: 2024/04/30 18:51:00 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/05 16:23:23 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class BitcoinExchange
         void loadFile(std::string data);
         void readInput(std::string input);
         bool checkDate(std::string date);
+        void dateNotFound(std::string date, float amount);
         
         std::map<std::string, double> Dataset;
 };

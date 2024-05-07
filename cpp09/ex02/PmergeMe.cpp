@@ -6,7 +6,7 @@
 /*   By: htaheri <htaheri@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:55:39 by htaheri           #+#    #+#             */
-/*   Updated: 2024/05/04 21:11:59 by htaheri          ###   ########.fr       */
+/*   Updated: 2024/05/07 12:38:14 by htaheri          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,54 +110,41 @@ bool PmergeMe::parseArgs(Container &temp, char **argv)
 {
     while (*argv)
     {
-        if (std::isdigit(*argv[0]))
-            temp.push_back(std::stoi(*argv));
-        else
-            return false;
-        argv++;
+        std::string arg = *argv;
+        std::istringstream iss(arg);
+        int num;
+        char next_char;
+        while (iss >> num)
+        {
+            if ((iss >> next_char && !std::isdigit(next_char)) || num < 0)
+                return false;
+            temp.push_back(num);
+        }
+        ++argv;
     }
     return true;
 }
 
-void PmergeMe::readArgs(char **argv)
-{
-    if (!parseArgs(this->_v1, argv) || !parseArgs(this->_d1, argv))
-    {
-        std::cerr << "Invalid input" << std::endl;
-        return;
-    }
-        
-    if (_v1.size() == 2)
-    {
-        if (_v1[0] > _v1[1])
-        {
-            std::cout << "Before swap: " << _v1[0] << " " << _v1[1] << std::endl;
-            std::cout << "After swap: " << _v1[1] << " " << _v1[0] << std::endl;
-        }
-        else
-        {
-            std::cout << "Before swap: " << _v1[0] << " " << _v1[1] << std::endl;
-            std::cout << "After swap: " << _v1[0] << " " << _v1[1] << std::endl;
-        }
-    }
 
-    pairing(_v1, _v2);
-    pairing(_d1, _d2);
-    
+
+void PmergeMe::vectorSort()
+{
+    clock_t vecStart, vecEnd;
+    std::vector<int> largest;
+    std::vector<int> smallest;
     std::vector<std::vector<int> > temp;
-        temp.push_back(_v2[0]);
+
+    std::cout << "Before:  ";
+    for (size_t i = 0; i < _v1.size(); ++i)
+        std::cout << _v1[i] << " ";
+    
+    vecStart = clock();
+    pairing(_v1, _v2);
+
+    temp.push_back(_v2[0]);
     for (size_t i = 1; i < _v2.size(); ++i) 
             binarySearch(temp, _v2[i]);
     _v2 = temp;
-    
-    std::deque<std::deque<int> > temp2;
-    temp2.push_back(_d2[0]);
-    for (size_t i = 1; i < _d2.size(); ++i)
-        binarySearch(temp2, _d2[i]);
-    _d2 = temp2;
-
-    std::vector<int> largest;
-    std::vector<int> smallest;
 
     for (size_t i = 0; i < _v2.size(); ++i)
     {
@@ -169,31 +156,68 @@ void PmergeMe::readArgs(char **argv)
     
     largest.insert(largest.begin(), smallest[0]);
     smallest.erase(smallest.begin());
+
     std::vector<int> jacobsthal = this->jacobsthal<std::vector<int> >(largest.size() + smallest.size());
     mergeInsertionSort(largest, smallest, jacobsthal);
-    
-    std::cout << "Merged vectors: ";
+    vecEnd = clock();
+    std::cout << std::endl << "After:  ";
     for (size_t i = 0; i < largest.size(); ++i)
         std::cout << largest[i] << " ";
+    std::cout << std::endl << std::endl;
+    std::cout << "Time to process a range of " << _v1.size() << " elements with std::vector : " << (double)(vecEnd - vecStart) / CLOCKS_PER_SEC << " s" << std::endl;
+}
 
-    std::deque<int> largest2;
-    std::deque<int> smallest2;
-    
+void PmergeMe::dequeSort()
+{
+    clock_t deqStart, deqEnd;
+    std::deque<int> largest;
+    std::deque<int> smallest;
+    std::deque<std::deque<int> > temp;
+
+    deqStart = clock();
+    pairing(_d1, _d2);
+
+    temp.push_back(_d2[0]);
+    for (size_t i = 1; i < _d2.size(); ++i)
+        binarySearch(temp, _d2[i]);
+    _d2 = temp;
+
     for (size_t i = 0; i < _d2.size(); ++i)
     {
-        largest2.push_back(_d2[i][0]);
-        smallest2.push_back(_d2[i][1]);
+        largest.push_back(_d2[i][0]);
+        smallest.push_back(_d2[i][1]);
     }
     if (_d1.size() % 2 != 0)
-        smallest2.push_back(_d1[_d1.size() - 1]);
+        smallest.push_back(_d1[_d1.size() - 1]);
     
-    largest2.insert(largest2.begin(), smallest2[0]);
-    smallest2.erase(smallest2.begin());
-    std::deque<int> jacobsthal2 = this->jacobsthal<std::deque<int> >(largest2.size() + smallest2.size());
-    mergeInsertionSort(largest2, smallest2, jacobsthal2);
+    largest.insert(largest.begin(), smallest[0]);
+    smallest.erase(smallest.begin());
+    std::deque<int> jacobsthal2 = this->jacobsthal<std::deque<int> >(largest.size() + smallest.size());
+    mergeInsertionSort(largest, smallest, jacobsthal2);
+    deqEnd = clock();
+    std::cout << "Time to process a range of " << _d1.size() << " elements with std::deque : " << (double)(deqEnd - deqStart) / CLOCKS_PER_SEC << " s" << std::endl;
     
-    std::cout << std::endl << "Merged deques: ";
-    for (size_t i = 0; i < largest2.size(); ++i)
-        std::cout << largest2[i] << " ";
+}
+
+void PmergeMe::readArgs(char **argv)
+{
+    if (!parseArgs(this->_v1, argv) || !parseArgs(this->_d1, argv))
+    {
+        std::cerr << "Error" << std::endl;
+        return;
+    }
+
+    if (_v1.size() == 1)
+    {
+        std::cout << "Before : " << _v1[0] << std::endl;
+        std::cout << "After : " << _v1[0] << std::endl;
+        std::cout << "Time to process a range of 1 element with std::vector : 0 s" << std::endl;
+        std::cout << "Time to process a range of 1 element with std::deque : 0 s" << std::endl;
+        return;
+    }
+    // vector part
+    vectorSort();
+    // Deque part
+    dequeSort();
 }
 
